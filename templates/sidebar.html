@@ -1,0 +1,11 @@
+<ul id=nav>
+  {% for item in menu %}
+    {% if item == current %}
+      <li id=current>
+    {% else %}
+      <li>
+    {% endif %}
+      <a href="{{ item }}">{{ item }}</a>
+    </li>
+  {% endfor %}
+</ul>

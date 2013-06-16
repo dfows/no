@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: lightblue;
+}
+div#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: gray;
+}
+div#sidebar ul#nav {
+  padding: 30%;
+  list-style-type: none;
+}
+div#sidebar ul#nav li#current {
+  font-weight: bold;
+}
+div#sidebar ul#nav li#current a {
+  color: black;
+}
+div#content {
+  position: absolute;
+  left: 20%;
+  padding: 20px;
+}

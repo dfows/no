@@ -1,0 +1,6 @@
+<!doctype html>
+<title>{{ page }}</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+<div class=main>
+  {% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+</div>
