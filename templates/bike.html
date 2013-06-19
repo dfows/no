@@ -1,5 +1,9 @@
 {% extends "standard.html" %}
-{% block body %}
+
+{% block header %}
 <h1>bikeblog</h1>
-<img src="{{ url_for('static', filename='bicycle.png') }}" />
+{% endblock %}
+
+{% block body %}
+<img src="{{ url_for('static', filename='montauk.jpg') }}" />
 {% endblock %}

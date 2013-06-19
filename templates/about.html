@@ -1,5 +1,20 @@
 {% extends "standard.html" %}
-{% block body %}
+
+{% block header %}
 <h1>JESSICA KWOK</h1>
 <a href="{{ url_for('static', filename='resume.pdf') }}">Resume</a>
+{% endblock %}
+
+{% block body %}
+<p>Things I like include, but are not limited to:</p>
+{% set things = ['food','math','cycling','snowboarding','painting','tea'] %}
+<ol>
+  {% for item in things %}
+    <li>{{ item }}</li>
+  {% endfor %}
+</ol>
+
+<h2>Short description</h2>
+<p>I majored in pure math at Courant.  Originally, I was in fine arts with a concentration in Painting at Steinhardt.  It makes me angry when people say things like, "Wow, math and art?  That's two ends of the spectrum!"  You are wrong.  It is the same end of the spectrum.</p>
+<p>In my free time, I can be found reading books at my local library, Barnes & Noble.  Otherwise, I might be biking along some river.</p>
 {% endblock %}

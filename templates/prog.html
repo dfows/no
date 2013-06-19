@@ -1,8 +1,16 @@
 {% extends "standard.html" %}
-{% block body %}
-<h1>PROG</h1>
-<ol>
-  <li>PROJECT1</li>
-  <li>PROJECT2</li>
+{% block header %}
+<h1>PROGRAMMING THINGS</h1>
+{% set stuff = ['Project 1','Mash','Development Blog'] %}
+<ol id=jumpto>
+{% for item in stuff %}
+  <li><a href="#{{ item.lower().replace(' ','-') }}">{{ item }}</a></li>
+{% endfor %}
 </ol>
+{% endblock %}
+{% block body %}
+<div id=project-1>eh</div>
+<div id=mash>m-m-m-mash</div>
+<div id=development-blog>{% include "devblog.html" %}</div>
+<img src="{{ url_for('static',filename='samiha.jpg') }}" />
 {% endblock %}

@@ -1,4 +1,10 @@
-@height: 100%;
+body {
+  font-family: Courier, "Courier New", monospace;
+}
+
+p {
+  font-size: 12px;
+}
 
 a {
   text-decoration: none;
@@ -30,4 +36,24 @@ div#content {
   position: absolute;
   left: 20%;
   padding: 20px;
+  width: 100%;
+  div#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 500;
+    background-color: white;
+    ol#jumpto {
+      list-style-type: lower-roman;
+      li {
+        text-transform: uppercase;
+        display: inline;
+      }
+    }
+  }
+  div#substance {
+    position: absolute;
+    top: 150px;
+  }
 }
