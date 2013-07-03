@@ -43,7 +43,7 @@
   background: url(http://jessicakwok.com/img/sprite.png) 0 -115px no-repeat;
 }
 .main #nav ul li#art a:hover {
-  background: url(http://jessicakwok.com/img/sprite.png) 2 -395px no-repeat;
+  background: url(http://jessicakwok.com/img/sprite.png) 2px -395px no-repeat;
 }
 .main #nav ul li#prog a {
   width: 500px;
@@ -57,7 +57,7 @@
   background: url(http://jessicakwok.com/img/sprite.png) 0 -230px no-repeat;
 }
 .main #nav ul li#misc a:hover {
-  background: url(http://jessicakwok.com/img/sprite.png) 2 -520px no-repeat;
+  background: url(http://jessicakwok.com/img/sprite.png) 2px -520px no-repeat;
 }
 .main #nav ul li a {
   height: 55px;

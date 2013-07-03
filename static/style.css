@@ -30,7 +30,7 @@ div#content {
   position: absolute;
   left: 20%;
   padding: 20px;
-  width: 100%;
+  width: 80%;
 }
 div#content div#header {
   position: fixed;
@@ -48,6 +48,7 @@ div#content div#header ol#jumpto li {
   display: inline;
 }
 div#content div#substance {
+  width: 80%;
   position: absolute;
   top: 150px;
 }
