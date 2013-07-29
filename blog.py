@@ -30,25 +30,21 @@ def teardown_request(exception):
   if db is not None:
     db.close()
 
-
-pages = ['home','about','contact','art','prog','misc','bike']
-
-
 #######
 #VIEWS#
 #######
 
-@app.route('/blog')
+@app.route('/')
 def show_entries():
-  cur = g.db.execute('SELECT title, date, text, tags FROM entries ORDER BY id DESC')
-  entries = [dict(title=row[0], date=row[1], text=row[2], tags=row[3]) for row in cur.fetchall()]
-  return render_template('blog.html', menu=pages, entries=entries)
+  cur = g.db.execute('SELECT title, text FROM entries ORDER BY id DESC')
+  entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+  return render_template('show_entries.html', entries=entries)
 
 @app.route('/add', methods=['POST'])
 def add_entry():
   if not session.get('logged_in'):
     abort(401)
-  g.db.execute('INSERT INTO entries (title, text, tags) VALUES (?, ?, ?)', [request.form['title'], request.form['text'], request.form['tags']])
+  g.db.execute('INSERT INTO entries (title, text) VALUES (?, ?)', [request.form['title'], request.form['text']])
   g.db.commit()
   flash('New entry was successfully posted')
   return redirect(url_for('show_entries'))
@@ -73,21 +69,5 @@ def logout():
   flash('You were logged out')
   return redirect(url_for('show_entries'))
 
-@app.route('/prog')
-def load_prog():
-  cur = g.db.execute('SELECT title, tagline, description, url, date FROM projects ORDER BY date DESC')
-  projectsList = [row[0] for row in cur.fetchall()]
-  cur = g.db.execute('SELECT title, tagline, description, url, date FROM projects ORDER BY date DESC')
-  projects = [dict(title=row[0], tagline=row[1], description=row[2], url=row[3], date=row[4]) for row in cur.fetchall()]
-  cur = g.db.execute('SELECT title, date, text, tags FROM entries WHERE tags LIKE "%dev%" ORDER BY id DESC')
-  entries = [dict(title=row[0], date=row[1], text=row[2], tags=row[3]) for row in cur.fetchall()]
-  return render_template('prog.html', current='prog', projectsList=projectsList, projects=projects, menu=pages, entries=entries)
-
-@app.route('/')
-@app.route('/<name>')
-def load_home(name="home"):
-  return render_template(name+".html",current=name, menu=pages)
-
 if __name__ == '__main__':
-  app.run(host='10.211.27.196')
-  app.run(debug=True)
+  app.run()

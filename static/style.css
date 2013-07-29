@@ -52,3 +52,9 @@ div#content div#substance {
   position: absolute;
   top: 150px;
 }
+div#content div#substance div#projectList ul.projects {
+  list-style-type: none;
+}
+div#content div#substance div#projectList ul.projects h2 {
+  margin-left: -25px;
+}

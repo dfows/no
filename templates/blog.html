@@ -1,0 +1,22 @@
+{% extends "standard.html" %}
+{% block header %}
+<h1>hi</h1>
+{% endblock %}
+
+{% block body %}
+  {% if session.logged_in %}
+  <form action="{{url_for('add_entry') }}" method=post class=add-entry>
+    <dt>Title: <input type=text size=30 name=title></dt>
+    <dt>Text: <textarea name=text rows=10 cols=40></textarea></dt>
+    <dt>Tags: <input type=text size=30 name=tags></dt>
+    <dt><input type=submit value=Share></dt>
+  </form>
+  {% endif %}
+<ul class=entries>
+{% for entry in entries %}
+  <li><h2>{{entry.title}}</h2>
+  <p>{{ entry.date }}</p>
+  {{ entry.text|safe }}
+{% endfor %}
+</ul>
+{% endblock %}
