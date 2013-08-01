@@ -1,0 +1,60 @@
+body {
+  font-family: Courier, "Courier New", monospace;
+}
+p {
+  font-size: 12px;
+}
+a {
+  text-decoration: none;
+  color: lightblue;
+}
+div#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: gray;
+}
+div#sidebar ul#nav {
+  padding: 30%;
+  list-style-type: none;
+}
+div#sidebar ul#nav li#current {
+  font-weight: bold;
+}
+div#sidebar ul#nav li#current a {
+  color: black;
+}
+div#content {
+  position: absolute;
+  left: 20%;
+  padding: 20px;
+  width: 80%;
+}
+div#content div#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 500;
+  background-color: white;
+}
+div#content div#header ol#jumpto {
+  list-style-type: lower-roman;
+}
+div#content div#header ol#jumpto li {
+  text-transform: uppercase;
+  display: inline;
+}
+div#content div#substance {
+  width: 80%;
+  position: absolute;
+  top: 150px;
+}
+div#content div#substance div#projectList ul.projects {
+  list-style-type: none;
+}
+div#content div#substance div#projectList ul.projects h2 {
+  margin-left: -25px;
+}

@@ -1,0 +1,78 @@
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  #nav {
+	  width: 100%;
+	  height: 100%;
+	  background-image: url(http://jessicakwok.com/img/bg.png);
+	  background-repeat: no-repeat;
+	  background-position:center;
+	  ul {
+		width: 500px;
+		height: 270px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+
+		li {
+		  list-style-type: none;
+		  @sBG: url(http://jessicakwok.com/img/sprite.png);
+		  @linkW: 500px;
+		  &#about {
+			a {
+			  width: 1/2*@linkW;
+			  background: @sBG 0 0 no-repeat;
+			  &:hover {
+				background: @sBG 0 -290px no-repeat;
+			  }
+			}
+		  }
+		  &#contact {
+			a {
+			  width: 5/8*@linkW;
+			  height: 49px;
+			  background: @sBG 0 -64px no-repeat;
+			  &:hover {
+				background: @sBG 0 -345px no-repeat;
+			  }
+			}
+		  }
+		  &#art {
+			a {
+			  width: 2/7*@linkW;
+			  background: @sBG 0 -115px no-repeat;
+			  &:hover {
+				background: @sBG 2px -395px no-repeat;
+			  }
+			}
+		  }
+		  &#prog {
+			a {
+			  width: @linkW;
+			  background: @sBG 0 -173px no-repeat;
+			  &:hover {
+				background: @sBG 0 -457px no-repeat;
+			  }
+			}
+		  }
+		  &#misc {
+			a {
+			  width: @linkW;
+			  background: @sBG 0 -230px no-repeat;
+			  &:hover {
+				background: @sBG 2px -520px no-repeat;
+			  }
+			}
+		  }
+		  a {
+			height: 55px;
+			display: block;
+		  }
+		}
+	  }
+  }
+}

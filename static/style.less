@@ -1,0 +1,69 @@
+body {
+  font-family: Courier, "Courier New", monospace;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: lightblue;
+}
+
+div#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: gray;
+  ul#nav {
+    padding: 30%;
+    list-style-type: none;
+    li {
+      &#current {
+        font-weight: bold;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+div#content {
+  position: absolute;
+  left: 20%;
+  padding: 20px;
+  width: 80%;
+  div#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 500;
+    background-color: white;
+    ol#jumpto {
+      list-style-type: lower-roman;
+      li {
+        text-transform: uppercase;
+        display: inline;
+      }
+    }
+  }
+  div#substance {
+    width: 80%;
+    position: absolute;
+    top: 150px;
+    
+    div#projectList {
+      ul.projects {
+        list-style-type: none;
+        h2 {
+          margin-left: -25px;
+        }
+      }
+    }
+  }
+}

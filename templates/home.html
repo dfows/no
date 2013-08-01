@@ -1,0 +1,15 @@
+<!doctype html>
+<title>{{ page }}</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+<div class=main>
+  <div id=nav>
+    <ul>
+    {% for item in menu %}
+      <li id="{{ item }}">
+        <a href="{{ item }}"></a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+</div>
