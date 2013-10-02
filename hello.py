@@ -1,15 +1,18 @@
-import sqlite3
-from contextlib import closing
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask.ext.sqlalchemy import SQLAlchemy
+from contextlib import closing
+import os
 
-DATABASE = '/tmp/blog.db'
-DEBUG = True
-SECRET_KEY = 'development key'
-USERNAME = 'admin'
-PASSWORD = 'default'
+#DATABASE = '/tmp/blog.db'
+#DEBUG = True
+#SECRET_KEY = 'development key'
+#USERNAME = 'admin'
+#PASSWORD = 'default'
 
 app = Flask(__name__)
-app.config.from_object(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
+#app.config.from_object(__name__)
 
 def connect_db():
   return sqlite3.connect(app.config['DATABASE'])
