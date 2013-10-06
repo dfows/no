@@ -3,13 +3,6 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from contextlib import closing
 import os
 
-#DATABASE = '/tmp/blog.db'
-#DEBUG = True
-#SECRET_KEY = 'development key'
-#USERNAME = 'admin'
-#PASSWORD = 'default'
-
-app = Flask(__name__)
 try:
   print os.environ['DATABASE_URL']
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -17,11 +10,13 @@ except KeyError:
   DATABASE_URL = "ec2-54-227-238-25.compute-1.amazonaws.com" 
   app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 db = SQLAlchemy(app)
-#app.config.from_object(__name__)
+
+app = Flask(__name__)
+app.config.from_object(__name__)
 
 """
 def connect_db():
-  return sqlite3.connect(app.config['DATABASE'])
+  return psycopg2.connect(app.config['DATABASE'])
 
 def init_db():
   with closing(connect_db()) as db:
