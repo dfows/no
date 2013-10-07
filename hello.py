@@ -10,8 +10,8 @@ try:
 except KeyError:
   DATABASE_URL = "ec2-54-227-238-25.compute-1.amazonaws.com" 
   app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-#app.config['USERNAME'] = 'admin'
-#app.config['PASSWORD'] = 'default'
+app.config['USERNAME'] = 'admin'
+app.config['PASSWORD'] = 'default'
 db = SQLAlchemy(app)
 
 #app.config.from_object(__name__)
@@ -66,7 +66,7 @@ def show_entries():
 def add_entry():
   if not session.get('logged_in'):
     abort(401)
-  new_entry = Entry(request.form['title'], request.form['text'], request.form['tags']])
+  new_entry = Entry(request.form['title'], request.form['text'], request.form['tags'])
   db.session.add(new_entry)
   db.session.commit()
   flash('New entry was successfully posted')
