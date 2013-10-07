@@ -13,7 +13,7 @@
 <div id=projectList>
   <ul class="projects">
   {% for project in projects %}
-    <li id="{{project.name}}"><h2><a href="{{ project.url }}">{{project.name}}</a></h2>
+    <li id="{{project.name.lower().replace(' ','-')}}"><h2><a href="{{ project.url }}">{{project.name}}</a></h2>
     <p>{{ project.date }}</p>
     <p>{{ project.tags }}</p>
     {{ project.description|safe }}
