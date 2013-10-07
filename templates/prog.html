@@ -23,6 +23,11 @@
 <div id=development-blog>
   <h1>dev blog</h1>
   <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{entry.title}}</h2>
+    <p>{{ entry.date }}</p>
+    {{ entry.text|safe }}
+  {% endfor %}
   </ul>
 </div>
 <img src="{{ url_for('static',filename='samiha.jpg') }}" />

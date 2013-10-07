@@ -94,7 +94,7 @@ def logout():
 def load_prog():
   projs = Project.query.order_by(Project.date)
   projectsList = [p.name for p in projs]
-  entries = "hello"#Entry.query.order_by(desc(Entry.date))
+  entries = Entry.query.order_by(Entry.date)
   return render_template('prog.html', current='prog', projectsList=projectsList, projects=projs, menu=pages, entries=entries)
 
 @app.route('/')
