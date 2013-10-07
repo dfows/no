@@ -1,18 +1,18 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from flask.ext.sqlalchemy import SQLAlchemy
 from contextlib import closing
-import os
+import os,datetime
+
+app = Flask(__name__)
 
 try:
-  print os.environ['DATABASE_URL']
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 except KeyError:
   DATABASE_URL = "ec2-54-227-238-25.compute-1.amazonaws.com" 
   app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 db = SQLAlchemy(app)
 
-app = Flask(__name__)
-app.config.from_object(__name__)
+#app.config.from_object(__name__)
 
 """
 def connect_db():
@@ -79,13 +79,10 @@ def logout():
 
 @app.route('/prog')
 def load_prog():
-  cur = g.db.execute('SELECT title, tagline, description, url, date FROM projects ORDER BY date DESC')
-  projectsList = [row[0] for row in cur.fetchall()]
-  cur = g.db.execute('SELECT title, tagline, description, url, date FROM projects ORDER BY date DESC')
-  projects = [dict(title=row[0], tagline=row[1], description=row[2], url=row[3], date=row[4]) for row in cur.fetchall()]
-  cur = g.db.execute('SELECT title, date, text, tags FROM entries WHERE tags LIKE "%dev%" ORDER BY id DESC')
-  entries = [dict(title=row[0], date=row[1], text=row[2], tags=row[3]) for row in cur.fetchall()]
-  return render_template('prog.html', current='prog', projectsList=projectsList, projects=projects, menu=pages, entries=entries)
+  projs = Project.query.order_by(desc(Project.date))
+  projectsList = [p.name for p in projs]
+  entries = "asdf"
+  return render_template('prog.html', current='prog', projectsList=projectsList, projects=projs, menu=pages, entries=entries)
 
 @app.route('/')
 @app.route('/<name>')
