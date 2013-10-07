@@ -10,6 +10,8 @@ try:
 except KeyError:
   DATABASE_URL = "ec2-54-227-238-25.compute-1.amazonaws.com" 
   app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+app.config['USERNAME'] = 'admin'
+app.config['PASSWORD'] = 'default'
 db = SQLAlchemy(app)
 
 #app.config.from_object(__name__)
@@ -57,16 +59,16 @@ pages = ['home','about','contact','art','prog','misc','bike']
 
 @app.route('/blog')
 def show_entries():
-  cur = g.db.execute('SELECT title, date, text, tags FROM entries ORDER BY id DESC')
-  entries = [dict(title=row[0], date=row[1], text=row[2], tags=row[3]) for row in cur.fetchall()]
+  entries = Entry.query.all() 
   return render_template('blog.html', menu=pages, entries=entries)
 
 @app.route('/add', methods=['POST'])
 def add_entry():
   if not session.get('logged_in'):
     abort(401)
-  g.db.execute('INSERT INTO entries (title, text, tags) VALUES (?, ?, ?)', [request.form['title'], request.form['text'], request.form['tags']])
-  g.db.commit()
+  new_entry = Entry(request.form['title'], request.form['text'], request.form['tags']])
+  db.session.add(new_entry)
+  db.session.commit()
   flash('New entry was successfully posted')
   return redirect(url_for('show_entries'))
 
