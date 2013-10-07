@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from flask.ext.sqlalchemy import SQLAlchemy,desc
+from flask.ext.sqlalchemy import SQLAlchemy
 from contextlib import closing
 import os,datetime
 
@@ -92,7 +92,7 @@ def logout():
 
 @app.route('/prog')
 def load_prog():
-  asdf = Project.query.order_by(desc(Project.date))
+  asdf = Project.query.order_by(Project.date)
   projs = asdf 
   projectsList = "projxlist"#[p.name for p in projs]
   entries = "hello"#Entry.query.order_by(desc(Entry.date))
