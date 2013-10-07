@@ -1,28 +1,8 @@
 {% extends "standard.html" %}
+
 {% block header %}
-<h1>PROGRAMMING THINGS</h1>
-<ol id=jumpto>
-{% for p in projectsList %}
-  <li><a href="#{{ p.lower().replace(' ','-') }}">{{ p }}</a></li>
-{% endfor %}
-</ol>
+<h1>{{ projectList }}</h1>
 {% endblock %}
 
 {% block body %}
-<div id=projectList>
-  <ul class="projects">
-  {% for project in projects %}
-    <li id="{{project.name}}"><h2><a href="{{ project.url }}">{{project.name}}</a></h2>
-    <p>{{ project.date }}</p>
-    <p>{{ project.tags }}</p>
-    {{ project.description|safe }}
-  {% endfor %}
-  </ul>
-</div>
-<div id=development-blog>
-  <h1>dev blog</h1>
-  <ul class=entries>
-  </ul>
-</div>
-<img src="{{ url_for('static',filename='samiha.jpg') }}" />
 {% endblock %}
