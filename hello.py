@@ -14,26 +14,20 @@ db = SQLAlchemy(app)
 
 #app.config.from_object(__name__)
 
-"""
-def connect_db():
-  return psycopg2.connect(app.config['DATABASE'])
+class Project(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(80))
+  date = db.Column(db.DateTime, default=datetime.datetime.now())
+  description = db.Column(db.Text)
+  tags = db.Column(db.Text)
 
-def init_db():
-  with closing(connect_db()) as db:
-    with app.open_resource('schema.sql', mode='r') as f:
-      db.cursor().executescript(f.read())
-    db.commit()
+  def __init__(self,name,description,tags):
+    self.name = name
+    self.description = description
+    self.tags = tags
 
-@app.before_request
-def before_request():
-  g.db = connect_db()
-
-@app.teardown_request
-def teardown_request(exception):
-  db = getattr(g, 'db', None)
-  if db is not None:
-    db.close()
-"""
+  def __repr__(self):
+    return '<boogers %s>' % self.name
 
 pages = ['home','about','contact','art','prog','misc','bike']
 
