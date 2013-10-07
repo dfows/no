@@ -17,17 +17,36 @@ db = SQLAlchemy(app)
 class Project(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(80))
+  url = db.Column(db.String(120))
   date = db.Column(db.DateTime, default=datetime.datetime.now())
   description = db.Column(db.Text)
   tags = db.Column(db.Text)
 
-  def __init__(self,name,description,tags):
+  def __init__(self,name,url,description,tags,date=None):
     self.name = name
+    self.url = url
     self.description = description
+    self.date = date
     self.tags = tags
 
   def __repr__(self):
     return '<boogers %s>' % self.name
+
+class Entry(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  title = db.Column(db.String(80))
+  date = db.Column(db.DateTime, default=datetime.datetime.now())
+  text = db.Column(db.Text)
+  tags = db.Column(db.Text)
+
+  def __init__(self,title,text,tags,date=None):
+    self.title = title
+    self.date = date
+    self.text = text
+    self.tags = tags
+
+  def __repr__(self):
+    return '<boogers %s>' % self.title
 
 pages = ['home','about','contact','art','prog','misc','bike']
 
@@ -75,7 +94,7 @@ def logout():
 def load_prog():
   projs = Project.query.order_by(desc(Project.date))
   projectsList = [p.name for p in projs]
-  entries = "asdf"
+  entries = Entry.query.order_by(desc(Entry.date))
   return render_template('prog.html', current='prog', projectsList=projectsList, projects=projs, menu=pages, entries=entries)
 
 @app.route('/')
