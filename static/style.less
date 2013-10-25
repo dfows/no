@@ -1,31 +1,47 @@
+@headerText: #e8d6c9;
+@linkText: #cf7758;
+@mostText: #838877;
+@backgroundColor: #362f2d;
+
 body {
-  font-family: Courier, "Courier New", monospace;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; 
+  background-color: @backgroundColor;
+  letter-spacing: 1px;
 }
 
-p {
-  font-size: 12px;
+h1,h2,h3 {
+  color: @headerText;
+}
+
+p,li {
+  font-size: 14px;
+  color: @mostText;
 }
 
 a {
   text-decoration: none;
-  color: lightblue;
+  color: @linkText;
 }
 
 div#sidebar {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
   width: 20%;
   height: 100%;
-  background-color: gray;
+  border-right: 1px solid @mostText;
+  background-color: @backgroundColor;
+  margin: 0;
   ul#nav {
     padding: 30%;
     list-style-type: none;
     li {
+      font-size: 16px;
       &#current {
         font-weight: bold;
         a {
-          color: black;
+          color: @mostText;
         }
       }
     }
@@ -38,12 +54,15 @@ div#content {
   padding: 20px;
   width: 80%;
   div#header {
+    z-index: 1;
+    background-color: @backgroundColor;
     position: fixed;
     top: 0;
+    left: 265px;
     width: 100%;
     height: 150px;
-    z-index: 500;
-    background-color: white;
+    padding: 20px;
+    color: @headerText;
     ol#jumpto {
       list-style-type: lower-roman;
       li {
@@ -55,13 +74,14 @@ div#content {
   div#substance {
     width: 80%;
     position: absolute;
-    top: 150px;
+    padding-top: 150px;
     
     div#projectList {
       ul.projects {
         list-style-type: none;
         h2 {
           margin-left: -25px;
+          color: @mostText;
         }
       }
     }

@@ -1,30 +1,45 @@
 body {
-  font-family: Courier, "Courier New", monospace;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #362f2d;
+  letter-spacing: 1px;
 }
-p {
-  font-size: 12px;
+h1,
+h2,
+h3 {
+  color: #e8d6c9;
+}
+p,
+li {
+  font-size: 14px;
+  color: #838877;
 }
 a {
   text-decoration: none;
-  color: lightblue;
+  color: #cf7758;
 }
 div#sidebar {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
   width: 20%;
   height: 100%;
-  background-color: gray;
+  border-right: 1px solid #838877;
+  background-color: #362f2d;
+  margin: 0;
 }
 div#sidebar ul#nav {
   padding: 30%;
   list-style-type: none;
 }
+div#sidebar ul#nav li {
+  font-size: 16px;
+}
 div#sidebar ul#nav li#current {
   font-weight: bold;
 }
 div#sidebar ul#nav li#current a {
-  color: black;
+  color: #838877;
 }
 div#content {
   position: absolute;
@@ -33,12 +48,15 @@ div#content {
   width: 80%;
 }
 div#content div#header {
+  z-index: 1;
+  background-color: #362f2d;
   position: fixed;
   top: 0;
+  left: 265px;
   width: 100%;
   height: 150px;
-  z-index: 500;
-  background-color: white;
+  padding: 20px;
+  color: #e8d6c9;
 }
 div#content div#header ol#jumpto {
   list-style-type: lower-roman;
@@ -50,11 +68,12 @@ div#content div#header ol#jumpto li {
 div#content div#substance {
   width: 80%;
   position: absolute;
-  top: 150px;
+  padding-top: 150px;
 }
 div#content div#substance div#projectList ul.projects {
   list-style-type: none;
 }
 div#content div#substance div#projectList ul.projects h2 {
   margin-left: -25px;
+  color: #838877;
 }
