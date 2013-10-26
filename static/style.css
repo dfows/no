@@ -9,7 +9,8 @@ h3 {
   color: #e8d6c9;
 }
 p,
-li {
+li,
+.standardText {
   font-size: 14px;
   color: #838877;
 }
@@ -54,9 +55,13 @@ div#content div#header {
   top: 0;
   left: 265px;
   width: 100%;
-  height: 150px;
+  height: 50px;
   padding: 20px;
   color: #e8d6c9;
+}
+div#content div#header span {
+  font-size: 14px;
+  color: #838877;
 }
 div#content div#header ol#jumpto {
   list-style-type: lower-roman;
@@ -68,7 +73,7 @@ div#content div#header ol#jumpto li {
 div#content div#substance {
   width: 80%;
   position: absolute;
-  padding-top: 150px;
+  padding-top: 50px;
 }
 div#content div#substance div#projectList ul.projects {
   list-style-type: none;
@@ -76,4 +81,10 @@ div#content div#substance div#projectList ul.projects {
 div#content div#substance div#projectList ul.projects h2 {
   margin-left: -25px;
   color: #838877;
+}
+div#content div#substance div#images {
+  white-space: nowrap;
+}
+div#content div#substance div#images img {
+  display: inline;
 }

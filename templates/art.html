@@ -1,9 +1,22 @@
 {% extends "standard.html" %}
 
 {% block header %}
-<h1>ya</h1>
+<h1>A cluster of pictures I made</h1>
 {% endblock %}
 
 {% block body %}
-<img src="{{ url_for('static', filename='randallsisl2.jpg') }}" />
+<!--img src="{{ url_for('static', filename='randallsisl2.jpg') }}" /-->
+<div id="images"></div>
+<script type="text/javascript">
+window.onload=function(){
+  var URL_str = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photosets.getPhotos&api_key=d3142fee7fcfcb2134ce938d1dcffc9f&photoset_id=72157636955940453";
+  $.getJSON(URL_str, function(data){
+    $.each(data.photoset.photo, function(i, item){
+      var photo = 'http://farm' + item.farm + '.staticflickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_z.jpg';
+      $('<img />').attr({src: photo, alt: item.title, title: item.title, height: 500}).appendTo("#images");
+    });
+  });
+}
+</script>
 {% endblock %}
+
